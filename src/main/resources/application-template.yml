@@ -1,0 +1,56 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+    listener:
+      simple:
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-attempts: 3
+          max-interval: 10000
+          multiplier: 2.0
+
+  # use utc instead local timezone
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    time-zone: UTC
+
+  datasource:
+    url: jdbc:h2:mem:messagedb
+    driverClassName: org.h2.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  thymeleaf:
+    cache: false
+
+app:
+  rabbitmq:
+    queue: message-queue
+    exchange: message-exchange
+    routing-key: message-routing-key
+    datetime-queue: datetime-message-queue
+    value-queue: value-message-queue
+
+server:
+  port: 8080

@@ -1,0 +1,26 @@
+.message-row {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.datetime-message {
+    background-color: #e3f2fd;
+}
+
+.value-message {
+    background-color: #f1f8e9;
+}
+
+.stats-card {
+    margin-bottom: 20px;
+}
+
+.new-message {
+    animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+    0% { background-color: #fff9c4; }
+    100% { background-color: inherit; }
+}
