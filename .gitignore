@@ -2,6 +2,7 @@ HELP.md
 src/main/resources/application.yml
 src/main/resources/application-*.yml
 !src/main/resources/application-template.yml
+!src/main/resources/application-docker.yml
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
